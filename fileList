@@ -1,0 +1,15 @@
+.git/
+patches/
+config.def.h
+drw.h
+util.h
+drw.c
+dwm.c
+transient.c
+util.c
+LICENSE
+Makefile
+README
+config.mk
+dwm.1
+dwm.png
