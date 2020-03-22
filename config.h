@@ -9,7 +9,7 @@ static const unsigned int gappoh	= 10;		/* horiz outer gap between windows and s
 static const unsigned int gappov	= 10;		/* vert outer gap between windows and screen edge */
 static const int smartgaps			= 0;		/* 1 means no outer gap when there is only one window */
 static const int showbar			= 1;		/* 0 means no bar */
-static const int topbar				= 0;		/* 0 means bottom bar */
+static const int topbar				= 1;		/* 0 means bottom bar */
 static const Bool viewontag			= True;		/* Switch view on tag switch */
 static const char *fonts[]			= { "sourcecodepro:size=14" };
 static const char dmenufont[]		= "sourcecodepro:size=14";
@@ -18,8 +18,7 @@ static const char col_gray2[]		= "#444444";
 static const char col_gray3[]		= "#bbbbbb";
 static const char col_gray4[]		= "#eeeeee";
 static const char col_cyan[]	 = "#005577";
-static const unsigned int baralpha = 0x88;
-static const unsigned int borderalpha = OPAQUE;
+static const unsigned int alpha = 0x88;
 static const char *colors[][3]		= {
 	/*				 fg			bg		   border	*/
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -28,8 +27,8 @@ static const char *colors[][3]		= {
 };
 static const unsigned int alphas[][3]	   = {
 	/*				 fg		 bg		   border	  */
-	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	[SchemeNorm] = { OPAQUE, alpha, alpha },
+	[SchemeSel]  = { OPAQUE, alpha, alpha },
 };
 
 /* tagging */
@@ -52,8 +51,8 @@ static const int resizehints = 1;	 /* 1 means respect size hints in tiled resiza
 
 static const Layout layouts[] = {
 	/* symbol	  arrange function */
-	{ "[]=",	  tile },	 /* first entry is default */
-	{ "><>",	  NULL },	 /* no layout function means floating behavior */
+	{ "[T]",	  tile },	 /* first entry is default */
+	{ "[F]",	  NULL },	 /* no layout function means floating behavior */
 	{ "[M]",	  monocle },
 };
 
@@ -83,7 +82,7 @@ static Key keys[] = {
 	{ ControlMask,					XK_Print,	spawn,			SHCMD("sleep 0.1s;scrot --select") },
 	{ MODKEY,						XK_Return,	spawn,		   {.v = termcmd } },
 	{ MODKEY,						XK_b,		togglebar,	   {0} },
-	{ MODKEY,						XK_j,	   focusstack,	   {.i = +1 } },
+	{ MODKEY,						XK_j,		focusstack,	   {.i = +1 } },
 	{ MODKEY,						XK_k,	   focusstack,	   {.i = -1 } },
 	{ MODKEY,						XK_a,	   incnmaster,	   {.i = +1 } },
 	{ MODKEY,						XK_s,	   incnmaster,	   {.i = -1 } },
